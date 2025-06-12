@@ -41,16 +41,21 @@
         padding: 20px;
     }
 </style>
-
 </head>
 <body>
     <p id="text-content">Your text goes here</p>
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const textParam = urlParams.get('text');
+    const queryString = window.location.search;
     
-    if (textParam) {
-        document.getElementById('text-content').textContent = decodeURIComponent(textParam);
+    if (queryString.startsWith('?text=')) {
+        const textParam = queryString.substring(6);
+        
+        try {
+            const decodedText = decodeURIComponent(textParam);
+            document.getElementById('text-content').textContent = decodedText;
+        } catch (e) {
+            document.getElementById('text-content').textContent = textParam;
+        }
     }
 </script>
 </body>
