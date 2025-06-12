@@ -45,18 +45,18 @@
 <body>
     <p id="text-content">Your text goes here</p>
 <script>
-    const queryString = window.location.search;
-    
-    if (queryString.startsWith('?text=')) {
-        const textParam = queryString.substring(6);
+const queryString = window.location.search;
         
-        try {
-            const decodedText = decodeURIComponent(textParam);
-            document.getElementById('text-content').textContent = decodedText;
-        } catch (e) {
-            document.getElementById('text-content').textContent = textParam;
+        if (queryString.includes('text=')) {
+            const textIndex = queryString.indexOf('text=') + 5;
+            const textParam = queryString.substring(textIndex);
+            try {
+                const decodedText = decodeURIComponent(textParam);
+                document.getElementById('text-content').textContent = decodedText;
+            } catch (e) {
+                document.getElementById('text-content').textContent = textParam;
+            }
         }
-    }
 </script>
 </body>
 </html>
