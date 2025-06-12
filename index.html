@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    body {
+        background-color: #ffffff;
+        color: #333333;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+    }
+
+    p {
+        text-align: center;
+        max-width: 600px;
+        padding: 20px;
+    }
+</style>
+
+</head>
+<body>
+    <p id="text-content">Your text goes here</p>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const textParam = urlParams.get('text');
+    
+    if (textParam) {
+        document.getElementById('text-content').textContent = decodeURIComponent(textParam);
+    }
+</script>
+</body>
+</html>
